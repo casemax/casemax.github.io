@@ -1,43 +1,79 @@
-# Setup
-title: Poole
-tagline: The Jekyll Butler
-url: https://getpoole.com
-paginate: 1
-baseurl: ""
+# ----
+# Site
+
+title: Edition Template
+url: "https://long-pig.cloudvent.net"
+baseurl:
+google_analytics_key:
+show_full_navigation: true
+
+# Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
+logo: /siteicon.png
+description: Product documentation template for Jekyll.
+author:
+  name:
+  email:
+  twitter: # twitter username without the @ symbol
+social:
+  name: Edition Template
+  links:
+    - https://github.com/CloudCannon/edition-jekyll-template
+
+# -----
+# Build
+
+timezone: Etc/UTC
+
 permalink: pretty
 
-# Gems
 plugins:
-  - jekyll-gist
-  - jekyll-paginate
+  - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-feed
 
-# Optimize Jekyll
 exclude:
-  - .editorconfig
-  - .git
-  - .jekyll-cache
   - Gemfile
   - Gemfile.lock
-  - LICENSE.md
   - README.md
+  - LICENCE
 
-sass:
-  sass_dir: _sass
-  style: :compressed
+collections:
+  docs:
+    title: Documentation
+    permalink: /:path/
+    output: true
 
-# Options
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: default
+  -
+    scope:
+      path: ""
+      type: "docs"
+    values:
+      seo:
+        type: Article
+      _comments:
+        category: Group navigation links with this field
+        order: Used to sort links in the navigation
+      _options:
+        content:
+          width: 800
+          height: 2000
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      _comments:
+        type: Marks the impact of this release
 
-# Replace this value and uncomment to enable Google Analytics tracking
-# ga_analytics: UA-000000-0
+# -----------
+# CloudCannon
 
-# Specify the author for blog posts
-author:
-  name: Mark Otto
-  url: https://twitter.com/mdo
-  email: markdotto@gmail.com
-
-# Custom vars
-version: 3.0.0
-github:
-  repo: https://github.com/poole/poole
+types:
+  - minor
+  - major
